@@ -93,6 +93,18 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="navigation-list-item">
+                            <a class="navigation-link" style="text-decoration: none;" href="/">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="fa-solid fa-user-plus"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        Ajouter un candidat
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
