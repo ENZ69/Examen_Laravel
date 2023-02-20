@@ -58,7 +58,7 @@
                                             <label class="h6">Nom</label>
                                         </div>
                                         <div>
-                                            <input type="text"  name="nomCandidat" class="form-control" placeholder="Nom du candidat" id="nom">
+                                            <input type="text"  name="nomCandidat" class="form-control" id="nom">
                                         </div>
                                     </div>
                                     <div class="mt-4">
@@ -66,7 +66,7 @@
                                             <label class="h6">Prénom</label>
                                         </div>
                                         <div>
-                                            <input type="text" name="prenom" class="form-control" placeholder="Prenom du candidat" id="prenom">
+                                            <input type="text" name="prenom" class="form-control" id="prenom">
                                         </div>
                                     </div>
                                     <div class="mt-4">
@@ -74,7 +74,7 @@
                                             <label class="h6">Email</label>
                                         </div>
                                         <div>
-                                            <input type="email" name="email" class="form-control" placeholder="email du candidat" id="email">
+                                            <input type="email" name="email" class="form-control" id="email">
                                         </div>
                                     </div>
                                     <div class="mt-4">
@@ -82,7 +82,7 @@
                                             <label class="h6">Age</label>
                                         </div>
                                         <div>
-                                            <input type="number" name="age" class="form-control" placeholder="Age du candidat" id="age" min="0" max="35">
+                                            <input type="number" name="age" class="form-control" id="age" min="0" max="35">
                                         </div>
                                     </div>
                                     <div class="mt-4">
@@ -90,7 +90,7 @@
                                             <label class="h6">Niveau d'étude</label>
                                         </div>
                                         <div>
-                                            <input type="text" name="niveauEtude" class="form-control" placeholder="Niveau d'étude du candidat" id="niveau">
+                                            <input type="text" name="niveauEtude" class="form-control" id="niveau">
                                         </div>
                                     </div>
                                     <div class="mt-4">
