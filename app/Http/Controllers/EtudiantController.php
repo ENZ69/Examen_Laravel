@@ -44,7 +44,7 @@ class EtudiantController extends Controller
             'email' => 'required|email',
             'age' => 'required',
             'niveauEtude' => 'required',
-            'niveauEtude' => 'required',
+            'sexe' => 'required',
         ]);
 
         $candidat = new Candidat();
@@ -58,8 +58,9 @@ class EtudiantController extends Controller
 
         $candidat->formations()->attach($request->input('formations'));
 
-        //return redirect("/candidats")->with('flash_message','Candidat enregistré');
-        return view('ajoute')->with('flash_message','Candidat enregistré');
+        return redirect()->route('dashboard')->with('success','Candidat enregistré avec succès');
+
+
     }
 
     /**

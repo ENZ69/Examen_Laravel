@@ -124,6 +124,12 @@
                     <div class="row">
                         <div class="col-6">Nombre de candidat par formation</div>
                     </div>
+                    @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                {{ session()->forget('success') }}
+            @endif
                 </div>
             </div>
             <div class="content-head">

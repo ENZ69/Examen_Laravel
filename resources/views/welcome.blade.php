@@ -142,7 +142,20 @@
                     </div>
                 </div>
                 <div class="sidebar-body">
-
+                    <ul class="navigation-list">
+                        <li class="navigation-list-item">
+                            <a class="navigation-link" style="text-decoration: none;" href="/gestion">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        Gestion
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -153,7 +166,7 @@
                             <i class="fa-solid fa-bars fa-3x"></i>
                         </button>
                         <div class="d-flex">
-                            <a href="/dashboard" style="text-decoration:none; font-size:20px" class="text-white"><i class="fa-solid fa-gauge"></i> Cliquez ici pour le Dashboard</a>
+                            <a href="/dashboard" style="text-decoration:none; font-size:20px" class="text-white"><i class="fa-solid fa-gauge"></i> Dashboard</a>
                         </div>
                     </div>
                 </nav>
@@ -178,6 +191,7 @@
                     <div class="card-footer mt-4 bg-white" style="border:none;">
                         <div class="row">
                             @foreach ($types as $type)
+                            <br>
                                 <div class="col-md-6 text-center">
                                     <a href="/types/{{ $type['id'] }}" class="btn btn-secondary" style="width:110px;">{{ $type['libelleType'] }}</a>
                                 </div>

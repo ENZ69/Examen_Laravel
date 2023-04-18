@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Formation;
+use App\Models\Referentiel;
 use App\Models\Type;
 
 class FormationController extends Controller
@@ -23,9 +24,21 @@ class FormationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'libelleReferentiel' => 'required',
+            'type_id' => 'required',
+            'horaire' => 'required',
+        ]);
+
+        $formation = new Formation();
+        $formation->nomFormation = $request->input('nomFormation');
+        $formation->duree = $request->input('duree');
+        $formation->description = $request->input('description');
+        $formation->referentiel_id = $request->input('referentiel_id');
+        $formation->save();
+        return redirect()->back()->with('success', 'formation ajouté avec succès.');
     }
 
     /**
@@ -58,7 +71,8 @@ class FormationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $formation = Formation::findOrFail($id);
+        return view('formationEdit', compact('formation'));
     }
 
     /**
@@ -70,7 +84,12 @@ class FormationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $formation = Formation::findOrFail($id);
+        $formation->nomFormation = $request->input('nomFormation');
+        $formation->duree = $request->input('duree');
+        $formation->description = $request->input('description');
+        $formation->save();
+        return redirect()->route('gestionformations')->with('success', 'La formation a été modifié avec succès.');
     }
 
     /**
@@ -81,7 +100,11 @@ class FormationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $formation = Formation::find($id);
+        $formation->delete();
+
+        // Rediriger vers la liste des utilisateurs
+        return redirect()->back()->with('success', 'Formation supprimé avec succès.');
     }
 
     public function canByfor()
@@ -102,5 +125,15 @@ class FormationController extends Controller
         $formations_en_attente = Formation::where('isStarted', false)->get();
 
         return view('statform', compact('formations_en_cours', 'formations_en_attente'));
+    }
+
+    public function gestionFormations(Request $request)
+    {
+        $formations = Formation::all();
+        $referentiels = Referentiel::all();
+        return view('gestionFormation', [
+            'formations' => $formations,
+            'referentiels' => $referentiels,
+        ]);
     }
 }

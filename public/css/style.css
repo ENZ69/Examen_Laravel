@@ -170,3 +170,7 @@ button.btn-outline-success{
     background-color: #fff;
     margin-right:40px;
 }
+
+#tableContainer{
+    overflow: auto
+}

@@ -22,9 +22,16 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'libelleType' => 'required',
+        ]);
+
+        $type = new Type();
+        $type->libelleType = $request->input('libelleType');
+        $type->save();
+        return redirect()->back()->with('success', 'Type ajouté avec succès.');
     }
 
     /**
@@ -36,6 +43,11 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         return view('welcome', ['types' => Type::all()]);
+    }
+
+    public function gestionType(Request $request)
+    {
+        return view('gestion', ['types' => Type::all()]);
     }
 
     /**
@@ -57,7 +69,8 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $type = Type::findOrFail($id);
+        return view('typeEdit', compact('type'));
     }
 
     /**
@@ -69,7 +82,10 @@ class TypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $type = Type::findOrFail($id);
+        $type->libelleType = $request->input('libelleType');
+        $type->save();
+        return redirect()->route('gestionDesTypes')->with('success', 'Le type a été modifié avec succès.');
     }
 
     /**
@@ -80,6 +96,10 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $type = Type::find($id);
+        $type->delete();
+
+        // Rediriger vers la liste des utilisateurs
+        return redirect()->back()->with('success', 'Type supprimé avec succès.');
     }
 }
